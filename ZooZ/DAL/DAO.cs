@@ -5,7 +5,8 @@ namespace Projeto_Template.DAL
 {
     public class DAO
     {
-        private string connectionString = @"server=localhost;user id=root;password=mysql;database=aula_poo_ado";
+        // FALTA TESTAR!
+        private string connectionString = @"server=sql10.freemysqlhosting.net;user id=sql10205465;password=2IrZ7R4mIS;database=sql10205465";
         private MySqlConnection conexao;
 
         public MySqlConnection Conexao
