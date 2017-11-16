@@ -27,5 +27,6 @@ namespace ZooZ
             this.Cargo = cargo;
             this.Setor = setor;
         }
+
     }
 }
