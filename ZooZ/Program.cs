@@ -28,7 +28,9 @@ namespace ZooZ
             RepositorioHabitat repHabitat = new RepositorioHabitat();
             RepositorioRecurso repRecurso = new RepositorioRecurso();
 
-            repHabitat.Alterar(6,"Sala de Informatica");
+            repHabitat.Listar();
+
+            //repHabitat.Alterar(6,"Sala de Informatica");
 
             //Recurso agua = new Recurso();
             //agua.Nome = "agua";
