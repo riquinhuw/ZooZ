@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZooZ.Repositorios;
 
 namespace ZooZ
 {
@@ -22,8 +23,24 @@ namespace ZooZ
     */
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args)//PODEM MUDAR O PROGRAM PARA TESTAR SUAS APLIACAÇÕES, fiquem tranquilos!
         {
+            RepositorioHabitat repHabitat = new RepositorioHabitat();
+            RepositorioRecurso repRecurso = new RepositorioRecurso();
+
+            repHabitat.Alterar(6,"Sala de Informatica");
+
+            //Recurso agua = new Recurso();
+            //agua.Nome = "agua";
+            //agua.Quantidade = 100;
+            //repRecurso.Inserir(agua);
+
+
+            //Habitat selva = new Habitat();
+            //selva.Nome = "selva";
+            //selva.RecursoId = 1;
+            //repHabitat.Inserir(selva);
+
         }
     }
 }

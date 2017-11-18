@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,10 @@ namespace ZooZ
 
         private string nome;
         private int id;
-
+        private int recursoId;
         public string Nome { get => nome; set => nome = value; }
         public int Id { get => id; set => id = value; }
+        public int RecursoId { get => recursoId; set => recursoId = value; }
 
         public Habitat() { }
 
@@ -24,6 +26,8 @@ namespace ZooZ
             this.Nome = nome;
 
         }
+
+
 
     }
 }
