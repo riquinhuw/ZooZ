@@ -13,6 +13,7 @@ namespace ZooZ
         private string especie;
         private int id;
         private int idHabitat;
+        private int idFuncionario;
 
 
         public string Nome { get => nome; set => nome = value; }
@@ -20,7 +21,7 @@ namespace ZooZ
         public string Especie { get => especie; set => especie = value; }
         public int Id { get => id; set => id = value; }
         public int IdHabitat { get => idHabitat; set => idHabitat = value; }
-
+        public int IdFuncionario { get => idFuncionario; set => idFuncionario = value; }
 
         public Animal() { } //Cosntrutor vazio
 

@@ -28,7 +28,7 @@ namespace ZooZ.Repositorios
         {
             MySqlParameter paramId = new MySqlParameter("@Id", id);
             MySqlParameter paramNomeHabitat = new MySqlParameter("@Nome", nome);
-            dao.ExecuteNonQuery("UPDATE Habitat SET nomeHabitat = @Nome WHERE id_Habitat = (@Id)", paramId, paramNomeHabitat);
+            dao.ExecuteNonQuery("UPDATE Habitat SET nomeHabitat = @Nome WHERE id_Habitat = (@Id)", paramNomeHabitat, paramId);
 
         }
 
@@ -45,7 +45,7 @@ namespace ZooZ.Repositorios
                 dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
-                    Console.WriteLine(dr["nomeHabitat"]);
+                    Console.WriteLine("{0} - {1} ,consumindo:{2}",dr["id_Habitat"],dr["nomeHabitat"],dr["Recursos_id"]);
                 }
             }
             catch (Exception ex)
