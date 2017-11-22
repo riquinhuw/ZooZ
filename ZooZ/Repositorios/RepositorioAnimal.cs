@@ -12,45 +12,82 @@ namespace ZooZ.Repositorios
         private DAO dao = new DAO();
         public void Inserir(Animal a)
         {
-
-            MySqlParameter paramNome = new MySqlParameter("@Nome", a.Nome);
-            MySqlParameter paramEspecie = new MySqlParameter("@Especie", a.Especie);
-            MySqlParameter paramIdade = new MySqlParameter("@Idade", a.Idade);
-            MySqlParameter paramId = new MySqlParameter("@Id", a.Id);
-            MySqlParameter paramHabitat = new MySqlParameter("@IdHabitat", a.IdHabitat);
-            MySqlParameter paramFuncionario = new MySqlParameter("@IdFuncionario", a.IdFuncionario);
-            dao.ExecuteNonQuery("INSERT INTO Animais (nomeAnimal,idade,especie,id_Animal,Habitat_id,id_Funcionario) VALUES (@Nome, @Idade, @especie,@id,@IdHabitat,@IdFuncionario)", paramNome, paramIdade, paramEspecie, paramId, paramHabitat, paramFuncionario);
+            try
+            {
+                MySqlParameter paramNome = new MySqlParameter("@Nome", a.Nome);
+                MySqlParameter paramEspecie = new MySqlParameter("@Especie", a.Especie);
+                MySqlParameter paramIdade = new MySqlParameter("@Idade", a.Idade);
+                MySqlParameter paramId = new MySqlParameter("@Id", a.Id);
+                MySqlParameter paramHabitat = new MySqlParameter("@IdHabitat", a.IdHabitat);
+                MySqlParameter paramFuncionario = new MySqlParameter("@IdFuncionario", a.IdFuncionario);
+                dao.ExecuteNonQuery("INSERT INTO Animais (nomeAnimal,idade,especie,id_Animal,Habitat_id,id_Funcionario) VALUES (@Nome, @Idade, @especie,@id,@IdHabitat,@IdFuncionario)", paramNome, paramIdade, paramEspecie, paramId, paramHabitat, paramFuncionario);
+            }
+            catch( Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro ao inserir um animal." + ex.Message);
+                throw ex;
+            }
+    
+            
         }                           
 
 
         public void Remover(int id)//via ID
         {
-            MySqlParameter paramId = new MySqlParameter("@Id", id);
-            dao.ExecuteNonQuery("DELETE FROM Animais WHERE id_Pessoa = (@Id)", paramId);
+            try
+            {
+                MySqlParameter paramId = new MySqlParameter("@Id", id);
+                dao.ExecuteNonQuery("DELETE FROM Animais WHERE id_Pessoa = (@Id)", paramId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao remover o animal." + ex.Message);
+                throw ex;
+            }
         }
+        
 
         public void AlterarNome(int id, string nome)//via ID mudar só o nome
         {
-            MySqlParameter paramId = new MySqlParameter("@Id", id);
-            MySqlParameter paramNome = new MySqlParameter("@Nome", nome);
-            dao.ExecuteNonQuery("UPDATE Animais SET nomeAnimal = @Nome WHERE id_Animal = (@Id)", paramNome, paramId);
-
+            try
+            {
+                MySqlParameter paramId = new MySqlParameter("@Id", id);
+                MySqlParameter paramNome = new MySqlParameter("@Nome", nome);
+                dao.ExecuteNonQuery("UPDATE Animais SET nomeAnimal = @Nome WHERE id_Animal = (@Id)", paramNome, paramId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao alterar o nome do animal. " + ex.Message);
+                throw ex;
+            }
         }
 
         public void AlterarEspecie(int id, string especie)//via ID mudar só a Especie
         {
-            MySqlParameter paramId = new MySqlParameter("@Id", id);
-            MySqlParameter paramEspecie = new MySqlParameter("@Especie", especie);
-            dao.ExecuteNonQuery("UPDATE Animais SET especie = @Especie WHERE id_Animal = (@Id)", paramEspecie, paramId);
-
+            try
+            {
+                MySqlParameter paramId = new MySqlParameter("@Id", id);
+                MySqlParameter paramEspecie = new MySqlParameter("@Especie", especie);
+                dao.ExecuteNonQuery("UPDATE Animais SET especie = @Especie WHERE id_Animal = (@Id)", paramEspecie, paramId);
+            }catch(Exception ex)
+            {
+                Console.WriteLine("Erro ao alterar a espécie.");
+                throw ex;
+            }
         }
 
         public void AlterarIdade(int id, int idade)//via ID mudar só a idade
         {
-            MySqlParameter paramId = new MySqlParameter("@Id", id);
-            MySqlParameter paramIdade = new MySqlParameter("@Idade", idade);
-            dao.ExecuteNonQuery("UPDATE Animais SET idade = @Idade WHERE id_Anial = (@Id)", paramIdade, paramId);
-
+            try
+            {
+                MySqlParameter paramId = new MySqlParameter("@Id", id);
+                MySqlParameter paramIdade = new MySqlParameter("@Idade", idade);
+                dao.ExecuteNonQuery("UPDATE Animais SET idade = @Idade WHERE id_Anial = (@Id)", paramIdade, paramId);
+            }catch(Exception ex)
+            {
+                Console.WriteLine("Erro ao alterar a idade do animal.");
+                throw ex;
+            }
         }
 
 
