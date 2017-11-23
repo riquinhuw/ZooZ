@@ -21,10 +21,10 @@ namespace ZooZ
 
         public Habitat() { }
 
-        public Habitat(string nome)
+        public Habitat(string nome, int idRecurso)
         {
             this.Nome = nome;
-
+            this.RecursoId = idRecurso;
         }
 
 
