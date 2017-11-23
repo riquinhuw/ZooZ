@@ -131,7 +131,7 @@ namespace ZooZ
                         idAlterar = int.Parse(Console.ReadLine());
                         Console.WriteLine("Digite o nome do Habitat:");
                         nome = Console.ReadLine();
-                        repHabitat.Alterar(idAlterar, nome);
+                        repHabitat.Alterar(idAlterar, nome); 
                         break;
 
                     case 3://INSERIR HABITAT
@@ -171,7 +171,96 @@ namespace ZooZ
 
         static public void MenuAnimal()
         {
-            //CODIGO ANIMALLLL UAUUUUU
+            bool looping = true;
+            do
+            {
+                Logomarca();
+                //vitur do gera
+                int caseSwitch;
+                Console.WriteLine("Seleciona a opção que deseja:");
+                Console.WriteLine("1 - Listar um animal");
+                Console.WriteLine("2 - Alterar o nome do animal(id)");
+                Console.WriteLine("3 - Alterar a espécie do animal");
+                Console.WriteLine("4 - Alterar a idade de um animal");
+                Console.WriteLine("5 - Inserir um novo animal");
+                Console.WriteLine("6 - Remover um animal");
+                Console.WriteLine("7 - Sair");
+                Console.Write("\n\nDigite uma opção:");
+                caseSwitch = int.Parse(Console.ReadLine());
+
+                switch (caseSwitch)
+                {
+                    case 1://LISTAR HABITATS
+                        Logomarca();
+                        repAnimal.Listar();
+                        break;
+
+                    case 2:// ALTERAR O NOME DO ANIMAL
+                        Logomarca();
+                        int idAlterarAnimal;
+                        string nomeAnimal;
+                        Console.WriteLine("Digite o Id do animal:");
+                        idAlterarAnimal = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Digite o nome do animal:");
+                        nomeAnimal = Console.ReadLine();
+                        repAnimal.AlterarNome(idAlterarAnimal, nomeAnimal);
+                        break;
+
+                    case 3://ALTERAR A ESPÉCIE DE UM ANIMAL
+                        Logomarca();                        
+                        int idAlterarEspecieAnimal;
+                        string especieAnimal;
+                        Console.WriteLine("Digite o Id do animal, que terá a sua espécie alterada:");
+                        idAlterarEspecieAnimal = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Digite o nome do animal, que terá a sua espécie alterada:");
+                        especieAnimal = Console.ReadLine();
+                        repAnimal.AlterarEspecie(idAlterarEspecieAnimal, especieAnimal);
+                        break;
+
+                    case 4://ALTERAR A IDADE DE UM ANIMAL
+                        Logomarca();
+                        int idAlterarIdadeAnimal;
+                        int idadeAnimal;
+                        Console.WriteLine("Digite o Id do animal, que terá a sua idade alterada:");
+                        idAlterarIdadeAnimal = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Digite a idade alterada do animal:");
+                        idadeAnimal = int.Parse(Console.ReadLine());
+                        repAnimal.AlterarIdade(idAlterarIdadeAnimal, idadeAnimal);
+                        break;
+
+                    case 5://INSERIR UM NOVO ANIMAL
+                        Logomarca();
+                        Animal animal01 = new Animal();
+                        Console.WriteLine("Insira o id do animal");
+                        animal01.Id = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Insira o nome do animal");
+                        animal01.Nome = Console.ReadLine();
+                        Console.WriteLine("Insira a idade do animal");
+                        animal01.Idade = int.Parse(Console.ReadLine());                       
+                        break;
+
+                    case 6://REMOVER UM ANIMAL
+                        Logomarca();
+                        int idRemoverAnimal;
+                        Console.WriteLine("Digite o Id do animal que deseja remover:");
+                        idRemoverAnimal = int.Parse(Console.ReadLine());
+                        repHabitat.Remover(idRemoverAnimal);
+                        break;
+
+
+                    case 7://sair
+                        string respostaDoUsuarioMenuAnimal;
+                        Console.WriteLine("Você quer realmente sair?(s/n):");
+                        respostaDoUsuarioMenuAnimal = Console.ReadLine().ToUpper();
+                        if (respostaDoUsuarioMenuAnimal == "S") { looping = false; }
+                        break;
+
+                    default:
+                        Console.WriteLine("DIGITE UM NUMERO CORRETO SEU ANIMAL RACIONAL");
+                        break;
+                }
+            } while (looping);
+
 
         }
 
