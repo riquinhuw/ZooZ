@@ -72,7 +72,10 @@ namespace ZooZ.Repositorios
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocorreu um erro ... " + ex.Message);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Ocorreu um erro ao listar os habitats\n\n\n");
+                Console.ResetColor();
+                Console.WriteLine(ex.Message);
                 throw ex;
             }
             finally

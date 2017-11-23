@@ -22,95 +22,169 @@ namespace ZooZ
      * 
     */
     class Program
-    {
+
+    {   // Repositorios com os metodos CIDA com o BD
+        public static RepositorioHabitat repHabitat = new RepositorioHabitat();
+        public static RepositorioRecurso repRecurso = new RepositorioRecurso();
+        public static RepositorioAnimal repAnimal = new RepositorioAnimal();
+        public static RepositorioFuncionario repFuncionario = new RepositorioFuncionario();
+
         static void Main(string[] args)//PODEM MUDAR O PROGRAM PARA TESTAR SUAS APLIACAÇÕES, fiquem tranquilos!
         {
-            int caseSwitch;
+            int menu = 0;//int para index do Swtich do Menu inicial que irá indicar os outros menus especificios de cada classe.
+            bool looping = true;//Bool para continuar o looping do menu inicial.
+
+            do
+            {
+                Logomarca();
+                Console.WriteLine("Seleciona a opção que deseja:");
+                Console.WriteLine("\n1 - Funcionários");
+                Console.WriteLine("2 - Habitat");
+                Console.WriteLine("3 - Recursos");
+                Console.WriteLine("4 - Animais");
+                Console.Write("\nDigite a opção:");
+                
+                menu = int.Parse(Console.ReadLine());
+                switch (menu)
+                {
+                    case 1:// Menu Funcionario
+                        MenuFuncionario();
+                        break;
+
+                    case 2://Menu Habitat
+                        MenuHabitat();
+                        break;
+
+                    case 3:// Menu Recurso
+                        MenuRecurso();
+                        break;
+
+                    case 4:// MEnu Animal
+                        MenuAnimal();
+                        break;
+
+                    case 5://sair
+                        string respostaDoUsuario;
+                        Console.WriteLine("Você quer realmente sair?(s/n):");
+                        respostaDoUsuario = Console.ReadLine().ToUpper();
+                        if (respostaDoUsuario == "S") { looping = false; }
+                        break;
+
+                    case 007:// Hum...
+
+                        break;
+
+                    default://Error default 404 nothing found
+                        Console.WriteLine("Digite uma opção valida tente novamente\npress any key to continue");
+                        Console.ReadKey();
+                        break;
+                }
+
+            }while(looping);
 
 
-            RepositorioHabitat repHabitat = new RepositorioHabitat();
-            RepositorioRecurso repRecurso = new RepositorioRecurso();
-            RepositorioAnimal repAnimal = new RepositorioAnimal();
-            RepositorioFuncionario repFuncionario = new RepositorioFuncionario();
+        }
 
+        static public void Logomarca()
+        {
+            //Vitor do gera
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(@" ________   ___ _____");
             Console.WriteLine(@"|__  / _ \ / _ \__  /");
             Console.WriteLine(@"  / / | | | | | |/ / ");
             Console.WriteLine(@" / /| |_| | |_| / /_ ");
             Console.WriteLine(@"/____\___/ \___/____|");
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("\n\n");
+            Console.ResetColor();
+        }
 
-
-            Console.WriteLine("Seleciona a opção que deseja:");
-            Console.WriteLine("Opção 1");
-            Console.WriteLine("Opção 2");
-            Console.WriteLine("Opção 3");
-            Console.WriteLine("Opção 4");
-            Console.WriteLine("Opção 5");
-            caseSwitch = int.Parse(Console.ReadLine());
-
-            switch (caseSwitch)
+        static public void MenuHabitat()
+        {
+            bool looping = true;
+            do
             {
-                case 1:
-                    repHabitat.Listar();
-                    break;
+                Logomarca();
+                //vitur do gera
+                int caseSwitch;
+                Console.WriteLine("Seleciona a opção que deseja:");
+                Console.WriteLine("1 - Listar os Habitats");
+                Console.WriteLine("2 - Alterar o nome do Habitat(id)");
+                Console.WriteLine("3 - Inserir Habitat");
+                Console.WriteLine("4 - Remover");
+                Console.WriteLine("5 - Sair");
+                Console.Write("\n\nDigite uma opção:");
+                caseSwitch = int.Parse(Console.ReadLine());
 
-                case 2:
-                    int idAlterar;
-                    string nome;
-                    Console.WriteLine("Digite o Id do Habitat:");
-                    idAlterar = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Digite o nome do Habitat:");
-                    nome = Console.ReadLine();
-                    repHabitat.Alterar(idAlterar, nome);                    
-                    break;
+                switch (caseSwitch)
+                {
+                    case 1://LISTAR HABITATS
+                        Logomarca();
+                        repHabitat.Listar();
+                        break;
 
-                case 3:
+                    case 2:// ALTERAR
+                        Logomarca();
+                        int idAlterar;
+                        string nome;
+                        Console.WriteLine("Digite o Id do Habitat:");
+                        idAlterar = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Digite o nome do Habitat:");
+                        nome = Console.ReadLine();
+                        repHabitat.Alterar(idAlterar, nome);
+                        break;
 
-                    string nomeHabitat;
-                    int idRecurso;
-                    Console.WriteLine("Insira o nome do Habitat");
-                    nomeHabitat = Console.ReadLine();
-                    Console.WriteLine("Digite o id do recurso que você deseja inserir:");
-                    idRecurso = int.Parse(Console.ReadLine());
-                    Habitat h1 = new Habitat(nomeHabitat, idRecurso);
-                    repHabitat.Inserir(h1);
-                    break;
+                    case 3://INSERIR HABITAT
+                        Logomarca();
+                        string nomeHabitat;
+                        int idRecurso;
+                        Console.WriteLine("Insira o nome do Habitat");
+                        nomeHabitat = Console.ReadLine();
+                        Console.WriteLine("Digite o id do recurso que você deseja inserir:");
+                        idRecurso = int.Parse(Console.ReadLine());
+                        Habitat h1 = new Habitat(nomeHabitat, idRecurso);
+                        repHabitat.Inserir(h1);
+                        break;
 
+                    case 4://Remover Habitat
+                        Logomarca();
+                        int idRemover;
+                        Console.WriteLine("Digite o Id do Habitat que deseja remover:");
+                        idRemover = int.Parse(Console.ReadLine());
+                        repHabitat.Remover(idRemover);
+                        break;
 
-                case 4:
-                    int idRemover;
-                    Console.WriteLine("Digite o Id do Habitat que deseja remover:");
-                    idRemover = int.Parse(Console.ReadLine());                        
-                    repHabitat.Remover(idRemover);
-                    break;
+                    case 5://sair
+                        string respostaDoUsuario;
+                        Console.WriteLine("Você quer realmente sair?(s/n):");
+                        respostaDoUsuario = Console.ReadLine().ToUpper();
+                        if (respostaDoUsuario == "S") { looping = false; }
+                        break;
 
-                
+                    default:
+                        Console.WriteLine("DIGITE UM NUMERO CORRETO SEU ANIMAL RACIONAL");
+                        break;
+                }
+            } while (looping);
 
+        }
 
+        static public void MenuAnimal()
+        {
+            //CODIGO ANIMALLLL UAUUUUU
 
+        }
 
+        static public void MenuRecurso()
+        {
+            //CODIGO DO Re´que da em CURSO hahahahah
 
+        }
 
+        static public void MenuFuncionario()
+        {
+            //Codigo que funciona no Mario, FUncioMario, HAHAHAHAHAH
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            }           
-         
         }
     }
 }
