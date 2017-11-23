@@ -22,7 +22,7 @@ namespace ZooZ.Repositorios
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erro ao inserir um funcionário");
+                Console.WriteLine("Erro ao inserir um funcionário" + ex.Message);
                 throw ex;
             }
 
@@ -38,7 +38,7 @@ namespace ZooZ.Repositorios
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erro ao remover o funcionário ");
+                Console.WriteLine("Erro ao remover o funcionário " + ex.Message);
                 throw ex;
             }
         }
@@ -53,7 +53,7 @@ namespace ZooZ.Repositorios
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erro ao alterar o nome do funcionário.");
+                Console.WriteLine("Erro ao alterar o nome do funcionário." + ex.Message);
                 throw ex;
             }
         }
@@ -68,7 +68,7 @@ namespace ZooZ.Repositorios
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erro ao alterar o cpf do funcionário.");
+                Console.WriteLine("Erro ao alterar o cpf do funcionário." + ex.Message);
                 throw ex;
             }
         }
@@ -83,7 +83,7 @@ namespace ZooZ.Repositorios
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erro ao alterar a idade do funcionário.");
+                Console.WriteLine("Erro ao alterar a idade do funcionário." + ex.Message);
                 throw ex;
             }
         }

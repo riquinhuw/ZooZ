@@ -21,7 +21,7 @@ namespace ZooZ.Repositorios
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erro ao inserir o Habitat");
+                Console.WriteLine("Erro ao inserir o Habitat" + ex.Message);
                 throw ex;
             }
         }
@@ -35,7 +35,7 @@ namespace ZooZ.Repositorios
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erro ao remover o Habitat");
+                Console.WriteLine("Erro ao remover o Habitat" + ex.Message);
                 throw ex;
             }
         }
@@ -49,7 +49,7 @@ namespace ZooZ.Repositorios
                 dao.ExecuteNonQuery("UPDATE Habitat SET nomeHabitat = @Nome WHERE id_Habitat = (@Id)", paramNomeHabitat, paramId);
             }catch(Exception ex)
             {
-                Console.WriteLine("Erro ao alterar o Habit");
+                Console.WriteLine("Erro ao alterar o Habit" + ex.Message);
                 throw ex;
             }
         }

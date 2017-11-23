@@ -71,7 +71,7 @@ namespace ZooZ.Repositorios
                 dao.ExecuteNonQuery("UPDATE Animais SET especie = @Especie WHERE id_Animal = (@Id)", paramEspecie, paramId);
             }catch(Exception ex)
             {
-                Console.WriteLine("Erro ao alterar a espécie.");
+                Console.WriteLine("Erro ao alterar a espécie." + ex.Message);
                 throw ex;
             }
         }
@@ -85,7 +85,7 @@ namespace ZooZ.Repositorios
                 dao.ExecuteNonQuery("UPDATE Animais SET idade = @Idade WHERE id_Anial = (@Id)", paramIdade, paramId);
             }catch(Exception ex)
             {
-                Console.WriteLine("Erro ao alterar a idade do animal.");
+                Console.WriteLine("Erro ao alterar a idade do animal." + ex.Message);
                 throw ex;
             }
         }

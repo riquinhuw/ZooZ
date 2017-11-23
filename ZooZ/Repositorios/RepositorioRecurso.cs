@@ -20,7 +20,7 @@ namespace ZooZ.Repositorios
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erro ao inserir o recurso.");
+                Console.WriteLine("Erro ao inserir o recurso." + ex.Message);
                 throw ex;
             }
         }
@@ -35,7 +35,7 @@ namespace ZooZ.Repositorios
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erro ao remover o recurso");
+                Console.WriteLine("Erro ao remover o recurso" + ex.Message);
                 throw ex;
             }
         }
@@ -50,17 +50,24 @@ namespace ZooZ.Repositorios
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erro ao alterar o nome do recurso");
+                Console.WriteLine("Erro ao alterar o nome do recurso" + ex.Message);
                 throw ex;
             }
         }
 
         public void AlterarQuantidade(int id, int quantidade)//via ID mudar só a quantidade
         {
-            MySqlParameter paramId = new MySqlParameter("@Id", id);
-            MySqlParameter paramQuantidade = new MySqlParameter("@Quantidade", quantidade);
-            dao.ExecuteNonQuery("UPDATE Recursos SET quantidade = @Quantidade WHERE id_Produto = (@Id)", paramQuantidade, paramId);
-
+            try
+            {
+                MySqlParameter paramId = new MySqlParameter("@Id", id);
+                MySqlParameter paramQuantidade = new MySqlParameter("@Quantidade", quantidade);
+                dao.ExecuteNonQuery("UPDATE Recursos SET quantidade = @Quantidade WHERE id_Produto = (@Id)", paramQuantidade, paramId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao alterar a quantidade do recurso" + ex.Message);
+                throw ex;
+            }
         }
 
         public void Listar() //Falta Procurar por nome especifico
