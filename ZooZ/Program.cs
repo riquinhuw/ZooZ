@@ -37,7 +37,6 @@ namespace ZooZ
             do
             {
                 Logomarca();
-
                 Console.WriteLine("Seleciona a opção que deseja:");
                 Console.WriteLine("\n1 - Funcionários");
                 Console.WriteLine("2 - Habitat");
@@ -466,7 +465,82 @@ namespace ZooZ
 
         static public void MenuRecurso()
         {
-            //CODIGO DO Re´que da em CURSO hahahahah
+            bool looping = true;
+            do
+            {
+                Logomarca();
+                
+                int caseSwitch;
+                Console.WriteLine("Seleciona a opção que deseja:");
+                Console.WriteLine("1 - Listar os Recursos");
+                Console.WriteLine("2 - Alterar o nome do Recurso(id)");
+                Console.WriteLine("3 - Alterar a quantidade do Recurso(id)");
+                Console.WriteLine("4 - Inserir Recurso");
+                Console.WriteLine("5 - Remover");
+                Console.WriteLine("6 - Sair");
+                Console.Write("\n\nDigite uma opção:");
+                caseSwitch = int.Parse(Console.ReadLine());
+
+                switch (caseSwitch)
+                {
+
+                    case 1://LISTAR Recursos
+                        Logomarca();
+                        repRecurso.Listar();
+                        break;
+
+                    case 2:// ALTERAR  nomerecursos
+                        Logomarca();
+                        int idAlterar;
+                        string nome;
+                        Console.Write("Digite o Id do recurso que deseja alterar o nome:");
+                        idAlterar = int.Parse(Console.ReadLine());
+                        Console.Write("Digite o nome do recurso:");
+                        nome = Console.ReadLine();
+                        repRecurso.AlterarNome(idAlterar, nome);
+                        break;
+
+                    case 3:// ALTERAR  Quantiodade
+                        Logomarca();
+                        int id;
+                        int quantidade;
+                        Console.Write("Digite o Id do recurso que deseja alterar a quantidade:");
+                        id = int.Parse(Console.ReadLine());
+                        Console.Write("Digite a quantidade do recurso:");
+                        quantidade = int.Parse(Console.ReadLine());
+                        repRecurso.AlterarQuantidade(id, quantidade);
+                        break;
+
+                    case 4://INSERIR Recurso
+                        Logomarca();
+                        Recurso rec = new Recurso();
+                        Console.WriteLine("Insira o nome do Recurso");
+                        rec.Nome = Console.ReadLine();
+                        Console.WriteLine("Digite a quantidade do produto:");
+                        rec.Quantidade = int.Parse(Console.ReadLine());
+                        repRecurso.Inserir(rec);
+                        break;
+
+                    case 5://Remover Recurso
+                        Logomarca();
+                        int idRemover;
+                        Console.WriteLine("Digite o Id do Recurso que deseja remover:");
+                        idRemover = int.Parse(Console.ReadLine());
+                        repRecurso.Remover(idRemover);
+                        break;
+
+                    case 6://sair
+                        string respostaDoUsuario;
+                        Console.WriteLine("Você quer realmente sair?(s/n):");
+                        respostaDoUsuario = Console.ReadLine().ToUpper();
+                        if (respostaDoUsuario == "S") { looping = false; }
+                        break;
+
+                    default:
+                        Console.WriteLine("Error, digite um numero valido");
+                        break;
+                }
+            } while (looping);
 
         }
 
@@ -474,6 +548,95 @@ namespace ZooZ
         {
             //Codigo que funciona no Mario, FUncioMario, HAHAHAHAHAH
 
+            bool looping = true;
+            do
+            {
+                Logomarca();
+
+                int caseSwitch;
+                Console.WriteLine("Seleciona a opção que deseja:");
+                Console.WriteLine("1 - Listar os Funcionarios");
+                Console.WriteLine("2 - Alterar o nome do Funcionario(id)");
+                Console.WriteLine("3 - Alterar o CPF do Funcionario(id)");
+                Console.WriteLine("4 - Alterar a idade do Funcionario(id)");
+                Console.WriteLine("5 - Inserir um novo Funcionario");
+                Console.WriteLine("6 - Remover");
+                Console.WriteLine("7 - Sair");
+                Console.Write("\n\nDigite uma opção:");
+                caseSwitch = int.Parse(Console.ReadLine());
+
+                switch (caseSwitch)
+                {
+
+                    case 1://LISTAR Funcionario
+                        Logomarca();
+                        repFuncionario.Listar();
+                        break;
+
+                    case 2:// ALTERAR  Funcionario nome                        
+                        int idAlterar;
+                        string nome;
+                        Console.Write("Digite o Id do Funcionario que deseja alterar o nome:");
+                        idAlterar = int.Parse(Console.ReadLine());
+                        Console.Write("Digite o nome do Funcionario:");
+                        nome = Console.ReadLine();
+                        repFuncionario.AlterarNome(idAlterar, nome);
+                        break;
+
+                    case 3:// ALTERAR  cpf
+                        Logomarca();
+                        int id;
+                        int cpf;
+                        Console.Write("Digite o Id do Funcionario que deseja alterar o CPF:");
+                        id = int.Parse(Console.ReadLine());
+                        Console.Write("Digite o novo CPF do funcionario:");
+                        cpf = int.Parse(Console.ReadLine());
+                        repFuncionario.AlterarCpf(id, cpf);
+                        break;
+                        
+                    case 4:// ALTERAR  Idade
+                        Logomarca();
+                        int identificacao;
+                        int idade;
+                        Console.Write("Digite o Id do Funcionario que deseja alterar o CPF:");
+                        identificacao = int.Parse(Console.ReadLine());
+                        Console.Write("Digite a nova idade do funcionario:");
+                        idade = int.Parse(Console.ReadLine());
+                        repFuncionario.AlterarIdade(identificacao, idade);
+                        break;
+
+                    case 5://INSERIR Recurso
+                        Logomarca();
+                        Funcionario fun = new Funcionario();
+                        Console.WriteLine("Insira o nome do Funcionario");
+                        fun.Nome = Console.ReadLine();
+                        Console.WriteLine("Digite o CPF do Funcionario:");
+                        fun.Cpf = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Digite a idade do Funcionario:");
+                        fun.Idade = int.Parse(Console.ReadLine());
+                        repFuncionario.Inserir(fun);
+                        break;
+
+                    case 6://Remover Recurso
+                        Logomarca();
+                        int idRemover;
+                        Console.WriteLine("Digite o Id do Funcionario que deseja remover:");
+                        idRemover = int.Parse(Console.ReadLine());
+                        repFuncionario.Remover(idRemover);
+                        break;
+
+                    case 7://sair
+                        string respostaDoUsuario;
+                        Console.WriteLine("Você quer realmente sair?(s/n):");
+                        respostaDoUsuario = Console.ReadLine().ToUpper();
+                        if (respostaDoUsuario == "S") { looping = false; }
+                        break;
+
+                    default:
+                        Console.WriteLine("Error, digite um numero valido");
+                        break;
+                }
+            } while (looping);
         }
     }
 }
