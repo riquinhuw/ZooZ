@@ -20,7 +20,7 @@ namespace ZooZ.Repositorios
                 MySqlParameter paramId = new MySqlParameter("@Id", a.Id);
                 MySqlParameter paramHabitat = new MySqlParameter("@IdHabitat", a.IdHabitat);
                 MySqlParameter paramFuncionario = new MySqlParameter("@IdFuncionario", a.IdFuncionario);
-                dao.ExecuteNonQuery("INSERT INTO Animais (nomeAnimal,idade,especie,id_Animal,Habitat_id,id_Funcionario) VALUES (@Nome, @Idade, @especie,@id,@IdHabitat,@IdFuncionario)", paramNome, paramIdade, paramEspecie, paramId, paramHabitat, paramFuncionario);
+                dao.ExecuteNonQuery("INSERT INTO animal (NOME_ANIMAL,IDADE_ANIMAL,ESPECIE_ANIMAL,ID_ANIMAL,ID_HABITAT,FUNCIONARIO_PESSOA_ID) VALUES (@Nome, @Idade, @especie,@id,@IdHabitat,@IdFuncionario)", paramNome, paramIdade, paramEspecie, paramId, paramHabitat, paramFuncionario);
             }
             catch( Exception ex)
             {
@@ -37,7 +37,7 @@ namespace ZooZ.Repositorios
             try
             {
                 MySqlParameter paramId = new MySqlParameter("@Id", id);
-                dao.ExecuteNonQuery("DELETE FROM Animais WHERE id_Pessoa = (@Id)", paramId);
+                dao.ExecuteNonQuery("DELETE FROM animal WHERE FUNCIONARIO_PESSOA_ID = (@Id)", paramId);
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace ZooZ.Repositorios
             {
                 MySqlParameter paramId = new MySqlParameter("@Id", id);
                 MySqlParameter paramNome = new MySqlParameter("@Nome", nome);
-                dao.ExecuteNonQuery("UPDATE Animais SET nomeAnimal = @Nome WHERE id_Animal = (@Id)", paramNome, paramId);
+                dao.ExecuteNonQuery("UPDATE animal SET NOME_ANIMAL = @Nome WHERE ID_ANIMAL = (@Id)", paramNome, paramId);
             }
             catch (Exception ex)
             {
@@ -68,7 +68,7 @@ namespace ZooZ.Repositorios
             {
                 MySqlParameter paramId = new MySqlParameter("@Id", id);
                 MySqlParameter paramEspecie = new MySqlParameter("@Especie", especie);
-                dao.ExecuteNonQuery("UPDATE Animais SET especie = @Especie WHERE id_Animal = (@Id)", paramEspecie, paramId);
+                dao.ExecuteNonQuery("UPDATE animal SET ESPECIE_ANIMAL = @Especie WHERE ID_ANIMAL = (@Id)", paramEspecie, paramId);
             }catch(Exception ex)
             {
                 Console.WriteLine("Erro ao alterar a espécie." + ex.Message);
@@ -82,7 +82,7 @@ namespace ZooZ.Repositorios
             {
                 MySqlParameter paramId = new MySqlParameter("@Id", id);
                 MySqlParameter paramIdade = new MySqlParameter("@Idade", idade);
-                dao.ExecuteNonQuery("UPDATE Animais SET idade = @Idade WHERE id_Anial = (@Id)", paramIdade, paramId);
+                dao.ExecuteNonQuery("UPDATE animal SET IDADE_ANIMAL = @Idade WHERE ID_ANIMAL = (@Id)", paramIdade, paramId);
             }catch(Exception ex)
             {
                 Console.WriteLine("Erro ao alterar a idade do animal." + ex.Message);
@@ -93,8 +93,8 @@ namespace ZooZ.Repositorios
 
         public void Listar() //Falta Procurar por nome especifico
         {
-            string connectionString = (@"server=sql10.freemysqlhosting.net;user id=sql10205465;password=2IrZ7R4mIS;database=sql10205465");
-            string consulta = "SELECT * FROM Pessoa";
+            string connectionString = (@"server=127.0.0.1;user id=root;password=563009;database=zoologico");//fix it
+            string consulta = "SELECT * FROM animal";
             MySqlConnection conexao = new MySqlConnection(connectionString);
             MySqlCommand comando = new MySqlCommand(consulta, conexao);
             MySqlDataReader dr = null;

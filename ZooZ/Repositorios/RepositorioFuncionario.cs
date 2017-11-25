@@ -10,15 +10,19 @@ namespace ZooZ.Repositorios
     class RepositorioFuncionario
     {
         private DAO dao = new DAO();
-        public void Inserir(Funcionario f)
+        public void Inserir(Funcionario f)//FALTA ARRUMAR
         {
+            //meio de retornar
+            MySqlCommand cmd = new MySqlCommand("SELECT MAX(ID_PESSOA) FROM pessoa", dao.Conexao);
+            
             try
             {
                 MySqlParameter paramNome = new MySqlParameter("@Nome", f.Nome);
                 MySqlParameter paramCpf = new MySqlParameter("@Cpf", f.Cpf);
                 MySqlParameter paramIdade = new MySqlParameter("@Idade", f.Idade);
-                MySqlParameter paramMatricula = new MySqlParameter("@Matricula", f.Matricula);
-                dao.ExecuteNonQuery("INSERT INTO Pessoa (nome,idade,cpf,id_Pessoa) VALUES (@Nome, @Idade, @Cpf,@Matricula)", paramNome, paramIdade, paramCpf, paramMatricula);
+                dao.ExecuteNonQuery("INSERT INTO pessoa (NOME_PESSOA,IDADE,CPF) VALUES (@Nome, @Idade, @Cpf)", paramNome, paramIdade, paramCpf);
+                cmd.ExecuteScalar();
+                MySqlParameter paramSetor = new MySqlParameter("@Nome", f.Setor);
             }
             catch (Exception ex)
             {

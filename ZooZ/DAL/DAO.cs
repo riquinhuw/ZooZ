@@ -6,7 +6,7 @@ namespace ZooZ
     public class DAO
     {
         // FALTA TESTAR!
-        private string connectionString = @"server=sql10.freemysqlhosting.net;user id=sql10205465;password=2IrZ7R4mIS;database=sql10205465";
+        private string connectionString = @"server=127.0.0.1;user id=root;password=563009;database=zoologico";
         private MySqlConnection conexao;
 
         public MySqlConnection Conexao
