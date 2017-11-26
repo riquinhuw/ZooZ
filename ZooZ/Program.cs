@@ -29,9 +29,11 @@ namespace ZooZ
         public static RepositorioRecurso repRecurso = new RepositorioRecurso();
         public static RepositorioAnimal repAnimal = new RepositorioAnimal();
         public static RepositorioFuncionario repFuncionario = new RepositorioFuncionario();
+        public static RepositorioEgg egg = new RepositorioEgg();
 
         static void Main(string[] args)//PODEM MUDAR O PROGRAM PARA TESTAR SUAS APLIACAÇÕES, fiquem tranquilos!
         {
+            bool erroMenu = false;
             int menu = 0;//int para index do Swtich do Menu inicial que irá indicar os outros menus especificios de cada classe.
             bool looping = true;//Bool para continuar o looping do menu inicial.
             do
@@ -42,6 +44,8 @@ namespace ZooZ
                 Console.WriteLine("2 - Habitat");
                 Console.WriteLine("3 - Recursos");
                 Console.WriteLine("4 - Animais");
+                Console.WriteLine("5 - Sair");
+                if (erroMenu) { Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Opção invalida, tente novamente"); Console.ResetColor(); erroMenu = false; }
                 Console.Write("\nDigite a opção:");
 
                 menu = int.Parse(Console.ReadLine());
@@ -70,13 +74,14 @@ namespace ZooZ
                         if (respostaDoUsuario == "S") { looping = false; }
                         break;
 
-                    case 007:// Hum...
+                    case 2489:// Hum...
+
+                        egg.EasterEgg();
 
                         break;
 
                     default://Error default 404 nothing found
-                        Console.WriteLine("Digite uma opção valida tente novamente\npress any key to continue");
-                        Console.ReadKey();
+                        erroMenu = true;
                         break;
                 }
 
@@ -86,215 +91,41 @@ namespace ZooZ
         }
         static public void Logomarca()
         {
-            //Vitor do gera
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(@" ________   ___ _____");
-            Console.WriteLine(@"|__  / _ \ / _ \__  /");
-            Console.WriteLine(@"  / / | | | | | |/ / ");
-            Console.WriteLine(@" / /| |_| | |_| / /_ ");
-            Console.WriteLine(@"/____\___/ \___/____|");
-            Console.WriteLine("\n\n");
-            Console.ResetColor();
-        }
+            int minuto;
+            minuto = int.Parse(DateTime.Now.ToString("mm tt"));
 
-        #region EasterEgg
-        public static Thread t = new Thread(LogomarcaEasterEgg);
-         static public void LogomarcaEasterEgg()
-        {
-            int i = 0;
-            int x = 0;
-            string fila1, fila2, fila3, fila4, fila5, fila6;
+            if (minuto % 2 != 0) {
 
-            fila1 = (@" __________   ____ ______");
-            fila2 = (@"|___  / __ \ / __ \___  /");
-            fila3 = (@"   / / |  | | |  | | / / ");
-            fila4 = (@"  / /| |  | | |  | |/ /  ");
-            fila5 = (@" / /_| |__| | |__| / /__ ");
-            fila6 = (@"/_____\____/ \____/_____|");
-            
-            for (; i <= 30; i++)
-            {
-
-
-                
-
-                for (x = 0; x <= 24; x++)
-                { 
-                
+                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(fila1[x]);
-                }Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write(fila2[x]); 
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write(fila3[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write(fila4[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write(fila5[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write(fila6[x]);
-                }Console.Write("\n");
-                Thread.Sleep(200);
-                //parte 2
-
-                
-
-                for (x = 0; x <= 24; x++)
-                {
-
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write(fila1[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write(fila2[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write(fila3[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write(fila4[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write(fila5[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write(fila6[x]);
-                }
-                Console.Write("\n");
-                Thread.Sleep(200);
-
-                //parte 3
-                
-
-                for (x = 0; x <= 24; x++)
-                {
-
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write(fila1[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write(fila2[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write(fila3[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write(fila4[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write(fila5[x]);
-                }
-                Console.Write("\n");
-                for (x = 0; x <= 24; x++)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write(fila6[x]);
-                }
-                Console.Write("\n");
-                Thread.Sleep(200);
-
-
-                
-                
+                Console.WriteLine(@" ________   ___ _____");
+                Console.WriteLine(@"|__  / _ \ / _ \__  /");
+                Console.WriteLine(@"  / / | | | | | |/ / ");
+                Console.WriteLine(@" / /| |_| | |_| / /_ ");
+                Console.WriteLine(@"/____\___/ \___/____|");
+                Console.WriteLine("\n\n");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(@" ________   ___ _____");
+                Console.WriteLine(@"|__  / _ \ / _ \__  /");
+                Console.WriteLine(@"  / / | | | | | |/ / ");
+                Console.WriteLine(@" / /| |_| | |_| / /_ ");
+                Console.WriteLine(@"/____\___/ \___/____|");
+                Console.WriteLine("\n\n");
+                Console.ResetColor();
 
             }
-            Console.SetCursorPosition(0, 7);
-
-            //Console.Clear();
-            //Console.ForegroundColor = ConsoleColor.Red;
-            //Console.Write(@" _____"); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"___ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"  ___ "); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"_____"); Console.ForegroundColor = ConsoleColor.Red; Console.Write("\n");
-            //Console.Write(@"|__  /"); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@" _ \"); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@" /   \"); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"__  /"); Console.ForegroundColor = ConsoleColor.Red; Console.Write("\n");
-            //Console.Write(@"  / / "); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"| | |"); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@" | | "); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"|/ / "); Console.ForegroundColor = ConsoleColor.Red; Console.Write("\n");
-            //Console.Write(@" / /| "); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"|_| |"); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@" |_| "); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"/ /_ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write("\n");
-            //Console.Write(@"/____\"); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"___/"); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@" \___/"); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"____\"); Console.ForegroundColor = ConsoleColor.Red; Console.Write("\n");
-            //Console.Write("\n\n");
-            //Console.ResetColor();
-            //Thread.Sleep(250);
-            //Console.Clear();
-            //Console.ForegroundColor = ConsoleColor.Green;
-            //Console.Write(@" _____"); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"___ "); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"  ___ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"_____"); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\n");
-            //Console.Write(@"|__  /"); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@" _ \"); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@" /   \"); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"__  /"); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\n");
-            //Console.Write(@"  / / "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"| | |"); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@" | | "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"|/ / "); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\n");
-            //Console.Write(@" / /| "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"|_| |"); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@" |_| "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"/ /_ "); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\n");
-            //Console.Write(@"/____\"); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"___/"); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@" \___/"); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"____\"); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\n");
-            //Console.Write("\n\n");
-            //Console.ResetColor();
-            //Thread.Sleep(250);
-
-
-
-            //Console.Clear();
-            //Console.ForegroundColor = ConsoleColor.Red;
-            //Console.Write(@" ________ "); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"  ___ _____"); Console.Write("\n"); Console.ForegroundColor = ConsoleColor.Red;
-            //Console.Write(@"|__  / _ \"); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@" / _ \__  /"); Console.Write("\n"); Console.ForegroundColor = ConsoleColor.Red;
-            //Console.Write(@"  / / | | "); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"| | | |/ / "); Console.Write("\n"); Console.ForegroundColor = ConsoleColor.Red;
-            //Console.Write(@" / /| |_| "); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@"| |_| / /_ "); Console.Write("\n"); Console.ForegroundColor = ConsoleColor.Red;
-            //Console.Write(@"/____\___/"); Console.ForegroundColor = ConsoleColor.Green; Console.Write(@" \___/____|"); Console.Write("\n"); Console.ForegroundColor = ConsoleColor.Red;
-            //Console.Write("\n\n");
-            //Console.ResetColor();
-            //Thread.Sleep(250);
-            //Console.Clear();
-            //Console.ForegroundColor = ConsoleColor.Green;
-            //Console.Write(@" ________ "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"  ___ _____"); Console.Write("\n"); Console.ForegroundColor = ConsoleColor.Green;
-            //Console.Write(@"|__  / _ \"); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@" / _ \__  /"); Console.Write("\n"); Console.ForegroundColor = ConsoleColor.Green;
-            //Console.Write(@"  / / | | "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"| | | |/ / "); Console.Write("\n"); Console.ForegroundColor = ConsoleColor.Green;
-            //Console.Write(@" / /| |_| "); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@"| |_| / /_ "); Console.Write("\n"); Console.ForegroundColor = ConsoleColor.Green;
-            //Console.Write(@"/____\___/"); Console.ForegroundColor = ConsoleColor.Red; Console.Write(@" \___/____|"); Console.Write("\n"); Console.ForegroundColor = ConsoleColor.Green;
-            //Console.Write("\n\n");
-            //Console.ResetColor();
-            //Thread.Sleep(250);
         }
-        #endregion
+
+       
 
         static public void MenuHabitat()
         {
+            bool erroMenu = false;
             bool looping = true;
             do
             {
@@ -307,6 +138,7 @@ namespace ZooZ
                 Console.WriteLine("3 - Inserir Habitat");
                 Console.WriteLine("4 - Remover");
                 Console.WriteLine("5 - Sair");
+                if (erroMenu) { Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Opção invalida, tente novamente"); Console.ResetColor(); erroMenu = false; }
                 Console.Write("\n\nDigite uma opção:");
                 caseSwitch = int.Parse(Console.ReadLine());
 
@@ -356,7 +188,7 @@ namespace ZooZ
                         break;
 
                     default:
-                        Console.WriteLine("DIGITE UM NUMERO CORRETO SEU ANIMAL RACIONAL");
+                        erroMenu = true;
                         break;
                 }
             } while (looping);
@@ -365,6 +197,7 @@ namespace ZooZ
 
         static public void MenuAnimal()
         {
+            bool erroMenu = false;
             bool looping = true;
             do
             {
@@ -379,6 +212,7 @@ namespace ZooZ
                 Console.WriteLine("5 - Inserir um novo animal");
                 Console.WriteLine("6 - Remover um animal");
                 Console.WriteLine("7 - Sair");
+                if (erroMenu) { Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Opção invalida, tente novamente"); Console.ResetColor(); erroMenu = false; }
                 Console.Write("\n\nDigite uma opção:");
                 caseSwitch = int.Parse(Console.ReadLine());
 
@@ -455,7 +289,7 @@ namespace ZooZ
                         break;
 
                     default:
-                        Console.WriteLine("DIGITE UM NUMERO CORRETO SEU ANIMAL RACIONAL");
+                        erroMenu = true;
                         break;
                 }
             } while (looping);
@@ -465,6 +299,7 @@ namespace ZooZ
 
         static public void MenuRecurso()
         {
+            bool erroMenu = false;
             bool looping = true;
             do
             {
@@ -478,6 +313,7 @@ namespace ZooZ
                 Console.WriteLine("4 - Inserir Recurso");
                 Console.WriteLine("5 - Remover");
                 Console.WriteLine("6 - Sair");
+                if (erroMenu) { Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Opção invalida, tente novamente"); Console.ResetColor(); erroMenu = false; }
                 Console.Write("\n\nDigite uma opção:");
                 caseSwitch = int.Parse(Console.ReadLine());
 
@@ -537,7 +373,7 @@ namespace ZooZ
                         break;
 
                     default:
-                        Console.WriteLine("Error, digite um numero valido");
+                        erroMenu = true;
                         break;
                 }
             } while (looping);
@@ -547,7 +383,7 @@ namespace ZooZ
         static public void MenuFuncionario()
         {
             //Codigo que funciona no Mario, FUncioMario, HAHAHAHAHAH
-
+            bool erroMenu = false;
             bool looping = true;
             do
             {
@@ -562,6 +398,7 @@ namespace ZooZ
                 Console.WriteLine("5 - Inserir um novo Funcionario");
                 Console.WriteLine("6 - Remover");
                 Console.WriteLine("7 - Sair");
+                if (erroMenu) { Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Opção invalida, tente novamente"); Console.ResetColor(); erroMenu = false; }
                 Console.Write("\n\nDigite uma opção:");
                 caseSwitch = int.Parse(Console.ReadLine());
 
@@ -633,7 +470,7 @@ namespace ZooZ
                         break;
 
                     default:
-                        Console.WriteLine("Error, digite um numero valido");
+                        erroMenu = true;
                         break;
                 }
             } while (looping);
