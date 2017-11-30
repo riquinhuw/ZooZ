@@ -67,7 +67,7 @@ namespace ZooZ.Repositorios
                 dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
-                    Console.WriteLine("{0} - {1} ,consumindo:{2}",dr["id_Habitat"],dr["nomeHabitat"],dr["Recursos_id"]);
+                    Console.WriteLine("{0} - {1} ,consumindo:{2}", dr["ID_HABITAT"], dr["NOME_HABITAT"], dr["ID_RECURSOS"]);
                 }
             }
             catch (Exception ex)
