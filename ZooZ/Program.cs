@@ -497,7 +497,7 @@ namespace ZooZ
                         Logomarca();
                         int identificacao;
                         int idade;
-                        Console.Write("Digite o Id do Funcionario que deseja alterar o CPF:");
+                        Console.Write("Digite o Id do Funcionario que deseja alterar a idade:");
                         identificacao = int.Parse(Console.ReadLine());
                         Console.Write("Digite a nova idade do funcionario:");
                         idade = int.Parse(Console.ReadLine());
