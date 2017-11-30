@@ -16,8 +16,8 @@ namespace ZooZ.Repositorios
             try
             {
                 MySqlParameter paramNome = new MySqlParameter("@Nome", h.Nome);
-                MySqlParameter paramRecursoId = new MySqlParameter("@recursoId", h.RecursoId);
-                dao.ExecuteNonQuery("INSERT INTO habitat (NOME_HABITAT,ID_RECURSOS) VALUES (@Nome, @recursoId)", paramNome, paramRecursoId);
+                MySqlParameter paramRecursoId = new MySqlParameter("@RecursoId", h.RecursoId);
+                dao.ExecuteNonQuery("INSERT INTO HABITAT (NOME_HABITAT,ID_RECURSOS) VALUES (@Nome, @RecursoId)", paramNome, paramRecursoId);
             }
             catch (Exception ex)
             {
@@ -31,7 +31,7 @@ namespace ZooZ.Repositorios
             try
             {
                 MySqlParameter paramId = new MySqlParameter("@Id", id);
-                dao.ExecuteNonQuery("DELETE FROM habitat WHERE ID_HABITAT = (@Id)", paramId);
+                dao.ExecuteNonQuery("DELETE FROM HABITAT WHERE ID_HABITAT = (@Id)", paramId);
             }
             catch (Exception ex)
             {
@@ -46,7 +46,7 @@ namespace ZooZ.Repositorios
             {
                 MySqlParameter paramId = new MySqlParameter("@Id", id);
                 MySqlParameter paramNomeHabitat = new MySqlParameter("@Nome", nome);
-                dao.ExecuteNonQuery("UPDATE habitat SET NOME_HABITAT = @Nome WHERE ID_HABITAT = (@Id)", paramNomeHabitat, paramId);
+                dao.ExecuteNonQuery("UPDATE HABITAT SET NOME_HABITAT = @Nome WHERE ID_HABITAT = (@Id)", paramNomeHabitat, paramId);
             }catch(Exception ex)
             {
                 Console.WriteLine("Erro ao alterar o Habit" + ex.Message);
@@ -56,8 +56,8 @@ namespace ZooZ.Repositorios
 
         public void Listar() //Falta Procurar por nome especifico
         {
-            string connectionString = (@"server=sql10.freemysqlhosting.net;user id=sql10205465;password=2IrZ7R4mIS;database=sql10205465");//fix it
-            string consulta = "SELECT * FROM habitat";
+            string connectionString = (@"server= sql10.freemysqlhosting.net;user id=sql10207977;password=Dftua2hRb3;database=sql10207977");//fix it
+            string consulta = "SELECT * FROM HABITAT";
             MySqlConnection conexao = new MySqlConnection(connectionString);
             MySqlCommand comando = new MySqlCommand(consulta, conexao);
             MySqlDataReader dr = null;

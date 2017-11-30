@@ -10,16 +10,16 @@ namespace ZooZ
     {
         private string nome;
         private int idade;
-        private double cpf;
+        private long cpf;
 
         public string Nome { get => nome; set => nome = value; }
         public int Idade { get => idade; set => idade = value; }
-        public double Cpf { get => cpf; set => cpf = value; }
+        public long Cpf { get => cpf; set => cpf = value; }
 
 
         protected Pessoa() { }//construtor vazio
 
-        protected Pessoa(string nome,int idade,double cpf)
+        protected Pessoa(string nome,int idade, long cpf)
         {
             this.Nome = nome;
             this.Idade = idade;

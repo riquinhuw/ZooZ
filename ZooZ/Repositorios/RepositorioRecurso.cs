@@ -16,7 +16,7 @@ namespace ZooZ.Repositorios
             {
                 MySqlParameter paramNome = new MySqlParameter("@Nome", r.Nome);
                 MySqlParameter paramQuantidade = new MySqlParameter("@Quantidade", r.Quantidade);
-                dao.ExecuteNonQuery("INSERT INTO recursos (ID_PRODUTO,QUANTIDADE_PRODUTO) VALUES (@Nome, @Quantidade)", paramNome, paramQuantidade);
+                dao.ExecuteNonQuery("INSERT INTO RECURSOS (NOME_PRODUTO,QUANTIDADE_PRODUTO) VALUES (@Nome, @Quantidade)", paramNome, paramQuantidade);
             }
             catch (Exception ex)
             {
@@ -31,7 +31,7 @@ namespace ZooZ.Repositorios
             try
             {
                 MySqlParameter paramId = new MySqlParameter("@Id", id);
-                dao.ExecuteNonQuery("DELETE FROM recursos WHERE ID_PRODUTO = (@Id)", paramId);
+                dao.ExecuteNonQuery("DELETE FROM RECURSOS WHERE ID_PRODUTO = (@Id)", paramId);
             }
             catch (Exception ex)
             {
@@ -46,7 +46,7 @@ namespace ZooZ.Repositorios
             {
                 MySqlParameter paramId = new MySqlParameter("@Id", id);
                 MySqlParameter paramNomeProduto = new MySqlParameter("@Nome", nome);
-                dao.ExecuteNonQuery("UPDATE recursos SET NOME_PRODUTO = @Nome WHERE ID_PRODUTO = (@Id)", paramNomeProduto, paramId);
+                dao.ExecuteNonQuery("UPDATE RECURSOS SET NOME_PRODUTO = @Nome WHERE ID_PRODUTO = (@Id)", paramNomeProduto, paramId);
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace ZooZ.Repositorios
             {
                 MySqlParameter paramId = new MySqlParameter("@Id", id);
                 MySqlParameter paramQuantidade = new MySqlParameter("@Quantidade", quantidade);
-                dao.ExecuteNonQuery("UPDATE recursos SET QUANTIDADE_PRODUTO = @Quantidade WHERE ID_PRODUTO = (@Id)", paramQuantidade, paramId);
+                dao.ExecuteNonQuery("UPDATE RECURSOS SET QUANTIDADE_PRODUTO = @Quantidade WHERE ID_PRODUTO = (@Id)", paramQuantidade, paramId);
             }
             catch (Exception ex)
             {
@@ -72,8 +72,8 @@ namespace ZooZ.Repositorios
 
         public void Listar() //Falta Procurar por nome especifico
         {
-            string connectionString = (@"server=sql10.freemysqlhosting.net;user id=sql10205465;password=2IrZ7R4mIS;database=sql10205465");//fix it
-            string consulta = "SELECT * FROM recursos";
+            string connectionString = (@"server= sql10.freemysqlhosting.net;user id=sql10207977;password=Dftua2hRb3;database=sql10207977");//fix it
+            string consulta = "SELECT * FROM RECURSOS";
             MySqlConnection conexao = new MySqlConnection(connectionString);
             MySqlCommand comando = new MySqlCommand(consulta, conexao);
             MySqlDataReader dr = null;

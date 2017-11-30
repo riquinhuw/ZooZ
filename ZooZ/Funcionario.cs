@@ -10,16 +10,16 @@ namespace ZooZ
     {
        private int matricula;
        private string cargo;
-       private int setor; //Numero do Habitat, vulgo chave estrangeira
+       private string setor; //Numero do Habitat, vulgo chave estrangeira
 
         public int Matricula { get => matricula; set => matricula = value; }
         public string Cargo { get => cargo; set => cargo = value; }
-        public int Setor { get => setor; set => setor = value; }
+        public string Setor { get => setor; set => setor = value; }
 
 
         public Funcionario() { }//Construtor vazio
 
-        public Funcionario(string nome, int idade, double cpf,string cargo,int setor)
+        public Funcionario(string nome, int idade, long cpf,string cargo,string setor)
         {
             this.Nome = nome;
             this.Idade = idade;
