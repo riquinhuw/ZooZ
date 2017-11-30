@@ -23,7 +23,7 @@ namespace ZooZ.Repositorios
                 t.Start();
                 Tetris();
             }
-            else { if (resposta == "mario") { LogomarcaEasterEgg(); Mario(); } }
+            else { if (resposta == "mario") { t.Start(); Mario(); } }
 
         }
 
@@ -43,7 +43,7 @@ namespace ZooZ.Repositorios
             fila5 = (@" / /_| |__| | |__| / /__ ");
             fila6 = (@"/_____\____/ \____/_____|");
 
-            for (; i <= 30; i++)
+            for (; i <= 50; i++)
             {
 
 
