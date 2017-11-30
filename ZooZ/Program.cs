@@ -212,13 +212,15 @@ namespace ZooZ
                 //vitur do gera
                 int caseSwitch;
                 Console.WriteLine("Seleciona a opção que deseja:");
-                Console.WriteLine("1 - Listar um animal");
-                Console.WriteLine("2 - Alterar o nome do animal(id)");
-                Console.WriteLine("3 - Alterar a espécie do animal");
+                Console.WriteLine("1 - Listar animais");
+                Console.WriteLine("2 - Alterar o nome de um animal(id)");
+                Console.WriteLine("3 - Alterar a espécie de um animal");
                 Console.WriteLine("4 - Alterar a idade de um animal");
                 Console.WriteLine("5 - Inserir um novo animal");
                 Console.WriteLine("6 - Remover um animal");
-                Console.WriteLine("7 - Sair");
+                Console.WriteLine("7 - Alterar o Cuidador");
+                Console.WriteLine("8 - Alterar o Habitat");
+                Console.WriteLine("9 - Sair");
                 if (erroMenu) { Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Opção invalida, tente novamente"); Console.ResetColor(); erroMenu = false; }
                 Console.Write("\n\nDigite uma opção:");
                 caseSwitch = int.Parse(Console.ReadLine());
@@ -299,8 +301,33 @@ namespace ZooZ
                         Console.ReadKey();
                         break;
 
+                    case 7://ALTERAR O CUIDADOR!
+                        Logomarca();
+                        int number;
+                        int cuidadorId;
+                        Console.WriteLine("Digite o Id do animal, que terá a seu cuidador alterado:");
+                        number = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Digite o id do novo cuidador do animal:");
+                        cuidadorId = int.Parse(Console.ReadLine());
+                        repAnimal.AlterarCuidador(number, cuidadorId);
+                        Console.WriteLine("Alterado com sucesso\nPressione qualquer tecla para continuar");
+                        Console.ReadKey();
+                        break;
 
-                    case 7://sair
+                    case 8://ALTERAR O HABITAT!
+                        Logomarca();
+                        int numero;
+                        int idHabitat;
+                        Console.WriteLine("Digite o Id do animal, que terá a seu Habitat alterado:");
+                        numero = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Digite o id do novo Habitat do animal:");
+                        idHabitat = int.Parse(Console.ReadLine());
+                        repAnimal.AlterarHabitat(numero, idHabitat);
+                        Console.WriteLine("Alterado com sucesso\nPressione qualquer tecla para continuar");
+                        Console.ReadKey();
+                        break;
+
+                    case 9://sair
                         string respostaDoUsuarioMenuAnimal;
                         Console.WriteLine("Você quer realmente sair?(s/n):");
                         respostaDoUsuarioMenuAnimal = Console.ReadLine().ToUpper();
@@ -490,7 +517,7 @@ namespace ZooZ
                         fun.Idade = int.Parse(Console.ReadLine());
                         Console.WriteLine("Digite o Cargo do Funcionario:");
                         fun.Cargo = Console.ReadLine();
-                        Console.WriteLine("Digite o Setor do Funcionario:");
+                        Console.WriteLine("Digite o Setor do Funcionario(nome):");
                         fun.Setor = Console.ReadLine();
                         repFuncionario.Inserir(fun);
                         Console.WriteLine("Criado com sucesso\nPressione qualquer tecla para continuar");

@@ -104,7 +104,7 @@ namespace ZooZ.Repositorios
                 dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
-                    Console.WriteLine("{0}-{1} {2} anos, da especie:{3}, no Habitat:{4}, tratado pelo funcionario:{5}", dr["id_Animal"], dr["nomeAnimal"], dr["idade"], dr["especie"], dr["Habitat_id"], dr["id_Funcionario"]);
+                    Console.WriteLine("{0}-{1} {2} anos, da especie:{3}, no Habitat:{4}, tratado pelo funcionario:{5}", dr["ID_ANIMAL"], dr["NOME_ANIMAL"], dr["IDADE_ANIMAL"], dr["ESPECIE_ANIMAL"], dr["ID_HABITAT"], dr["FUNCIONARIO_PESSOA_ID"]);
                 }
             }
             catch (Exception ex)
@@ -116,6 +116,36 @@ namespace ZooZ.Repositorios
             {
                 dr.Close();
                 conexao.Close();
+            }
+        }
+
+        public void AlterarCuidador(int id, int idCuidador)//via ID mudar só a idade
+        {
+            try
+            {
+                MySqlParameter paramId = new MySqlParameter("@Id", id);
+                MySqlParameter paramIdCuidador = new MySqlParameter("@IdCuidador", idCuidador);
+                dao.ExecuteNonQuery("UPDATE ANIMAL SET FUNCIONARIO_PESSOA_ID = @IdCuidador WHERE ID_ANIMAL = (@Id)", paramIdCuidador, paramId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao alterar a idade do animal." + ex.Message);
+                throw ex;
+            }
+        }
+
+        public void AlterarHabitat(int id, int idHabitat)//via ID mudar só a idade
+        {
+            try
+            {
+                MySqlParameter paramId = new MySqlParameter("@Id", id);
+                MySqlParameter paramIdHabitat = new MySqlParameter("@IdCuidador", idHabitat);
+                dao.ExecuteNonQuery("UPDATE ANIMAL SET ID_HABITAT = @IdCuidador WHERE ID_ANIMAL = (@Id)", paramIdHabitat, paramId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao alterar a idade do animal." + ex.Message);
+                throw ex;
             }
         }
     }
